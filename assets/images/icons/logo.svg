@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Círculo Azul -->
+  <circle cx="100" cy="100" r="90" fill="#4f39f6" />
+  
+  <!-- Letra S Em Branco -->
+  <text 
+    x="100" 
+    y="100" 
+    fill="#ffffff" 
+    font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+    font-size="110" 
+    font-weight="600" 
+    text-anchor="middle" 
+    dominant-baseline="central">
+    S
+  </text>
+</svg>
