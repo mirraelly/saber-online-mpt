@@ -2,6 +2,27 @@
   color-scheme: light;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 body {
   min-height: 100vh;
   line-height: 1.6;
@@ -31,11 +52,35 @@ body {
 
 .brand,
 .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-primary);
   text-decoration: none;
+}
+
+.brand-mark {
+  width: 2.65rem;
+  height: 2.65rem;
+  flex: 0 0 2.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 10px 24px rgba(67, 56, 202, 0.22);
+  user-select: none;
+}
+
+.footer-brand .brand-mark {
+  box-shadow: none;
 }
 
 .site-nav {
@@ -61,6 +106,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   border-radius: 999px;
   padding: 0.95rem 1.4rem;
   font-weight: 700;
@@ -113,6 +159,14 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.benefits {
+  background: #fffbeb;
+}
+
+.benefit-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 3.5vw, 4.75rem);
@@ -159,8 +213,7 @@ body {
 }
 
 .section-heading {
-  text-align: center;
-  max-width: 44rem;
+  text-align: left;
   margin: 0 auto 2rem;
 }
 
@@ -181,6 +234,16 @@ body {
   line-height: 1.05;
 }
 
+.section h2.depoimentos {
+  color: white;
+}
+
+.section-heading > p:not(.section-label) {
+  max-width: 42rem;
+  margin-top: 0.85rem;
+  color: var(--color-muted);
+}
+
 .benefits {
   background: #fffbeb;
 }
@@ -188,10 +251,12 @@ body {
 .benefit-grid,
 .course-grid,
 .testimonial-grid,
-.contact-grid,
 .footer-grid {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .benefit-grid {
@@ -201,18 +266,31 @@ body {
 .card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: 1.5rem;
-  padding: 1.75rem;
+  border-radius: 1.25rem;
+  padding: 1.15rem;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
 }
 
 .benefit-card {
-  min-height: 17rem;
+  height: 17rem;
+  padding: 1.5rem;
 }
 
 .card-icon {
-  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+  border-radius: 0.9rem;
+  background: rgba(67, 56, 202, 0.1);
+  color: var(--color-primary);
+}
+
+.card-icon i {
+  font-size: 1.6rem;
+  line-height: 1;
 }
 
 .benefit-card h3,
@@ -232,29 +310,34 @@ body {
 
 .course-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .course-card {
   overflow: hidden;
+  border-radius: 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+  background: #ffffff;
 }
 
 .course-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 1.35rem 1.3rem 1.5rem;
 }
 
 .course-level {
   display: inline-flex;
   margin-bottom: 0.85rem;
   color: #ffffff;
-  background: rgba(79, 70, 229, 0.9);
+  background: linear-gradient(90deg, #fb7185 0%, #8b5cf6 100%);
   border-radius: 999px;
-  padding: 0.55rem 0.85rem;
+  padding: 0.5rem 0.9rem;
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -273,37 +356,53 @@ body {
 }
 
 .button-small {
-  padding: 0.8rem 1rem;
+  background: linear-gradient(90deg, #5b46ff 0%, #7c3aed 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 1.25rem;
   font-size: 0.85rem;
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.24);
 }
 
 .testimonials {
-  background: #0f172a;
+  background: #020617;
   color: #e2e8f0;
 }
 
 .testimonial-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .testimonial-card {
-  border-color: rgba(148, 163, 184, 0.15);
+  min-height: 252px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 1.75rem;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 .testimonial-card p {
-  color: #cbd5e1;
-  margin: 1rem 0 1.5rem;
+  flex: 1;
+  color: #d7dee8;
+  margin: 1rem 0 1.75rem;
+  line-height: 1.8;
 }
 
 .testimonial-rating {
   color: #facc15;
   font-size: 1rem;
+  letter-spacing: 0.1em;
 }
 
 .testimonial-author {
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-top: auto;
 }
 
 .testimonial-author img {
@@ -328,30 +427,76 @@ body {
 }
 
 .contact-grid {
-  grid-template-columns: 1.4fr 0.9fr;
-  align-items: start;
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
 }
 
 .contact-form {
+  width: 100%;
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
+  background: #ffffff;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
 }
 
 .contact-form label {
   display: grid;
-  gap: 0.5rem;
-  font-size: 0.9rem;
+  gap: 0.55rem;
+  font-size: 0.85rem;
   color: var(--color-surface-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   padding: 0.95rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  background: #ffffff;
+  border: 1px solid #d8e0ec;
+  border-radius: 0.8rem;
+  background: #f8fafc;
   color: var(--color-surface-strong);
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(67, 56, 202, 0.65);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.1);
+}
+
+.contact-form input[readonly] {
+  background: #eef2ff;
+  color: #475569;
+  cursor: not-allowed;
+}
+
+.contact-form button {
+  width: 100%;
+  background: linear-gradient(90deg, #5b46ff 0%, #7c3aed 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  box-shadow: 0 16px 38px rgba(79, 70, 229, 0.26);
 }
 
 .contact-form textarea {
@@ -374,6 +519,10 @@ body {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.col-span-2 {
+  grid-column: span 2;
 }
 
 .contact-aside {
@@ -412,21 +561,77 @@ body {
   color: #ffffff;
 }
 
+.cta-card p {
+  margin-top: 0.75rem;
+  max-width: 42rem;
+}
+
 .site-footer {
-  padding: 3rem 0 2rem;
-  background: #0f172a;
+  padding: 4rem 0 2rem;
+  background: #020617;
   color: #94a3b8;
 }
 
 .footer-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1.6fr 1fr 1fr;
   gap: 2rem;
+  align-items: flex-start;
 }
 
 .footer-grid h4 {
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   font-size: 0.95rem;
+}
+
+.footer-grid a {
+  display: flex;
+  margin-bottom: 0.75rem;
+  color: #94a3b8;
+}
+
+.footer-grid a:hover {
+  color: #ffffff;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.footer-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-icon:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.footer-icon i {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.footer-bottom {
+  width: min(1120px, calc(100% - 2rem));
+  margin-top: 2rem;
+  margin-inline: auto;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  padding-top: 1.5rem;
 }
 
 .footer-grid p {
@@ -441,6 +646,16 @@ body {
   justify-content: space-between;
   gap: 1rem;
   font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-accent);
 }
 
 .form-result {
