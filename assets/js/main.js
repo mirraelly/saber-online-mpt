@@ -6,6 +6,9 @@ const bairroInput = document.querySelector('#bairro');
 const cidadeInput = document.querySelector('#cidade');
 const estadoInput = document.querySelector('#estado');
 const resultMessage = document.querySelector('#form-result');
+const modal = document.querySelector('#success-modal');
+const modalClose = document.querySelector('#success-modal .modal-close');
+const modalAction = document.querySelector('#success-modal .modal-action');
 
 const cleanCep = (value) => value.replace(/\D/g, '');
 
@@ -91,7 +94,27 @@ form.addEventListener('submit', (event) => {
 
     resultMessage.textContent = 'Obrigado! Sua mensagem foi enviada com sucesso.';
     resultMessage.style.color = '#16a34a';
+    openModal();
     form.reset();
     fillAddress({});
     clearCepFeedback();
 });
+
+const openModal = () => {
+    modal?.classList.add('visible');
+    modal?.setAttribute('aria-hidden', 'false');
+};
+
+const closeModal = () => {
+    modal?.classList.remove('visible');
+    modal?.setAttribute('aria-hidden', 'true');
+};
+
+modal?.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.dataset.modalClose !== undefined) {
+        closeModal();
+    }
+});
+
+modalClose?.addEventListener('click', closeModal);
+modalAction?.addEventListener('click', closeModal);

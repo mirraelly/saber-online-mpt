@@ -46,4 +46,8 @@
     flex-direction: column;
     text-align: center;
   }
+
+  .container-button {
+    justify-content: center;
+  }
 }
